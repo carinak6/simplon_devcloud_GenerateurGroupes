@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Creation des groupes </h1>
+    <form name="form1" methode='GET'>
+        <!--<input type="text">
+        <input type="submit" value="Envoyer"> onclick="envoyer(form1)" onClick="controle(form1)"" -->
+        <label for="">Nom de l'eleve</label>
+        <input TYPE="text" NAME="noms" class="name" VALUE="">  <INPUT TYPE="button" NAME="bouton" id='envoyer' VALUE="Envoyer" >
+    </form>
+    <h3> La liste des Eleves</h3>
+
+    <button id='voir'>Voir LocalStorage</button>
+    <label id="liste" for=""></label>
+    <ul  id="listeEleves"> </ul>
+
+    <label for="">Taille du Groupes </label>
+    <input type="number" name="tailleGroupe" id="tailleGroupe">
+    <button id='creation'>Creation</button>
+    <h2>Groupes</h2>
+    <div id="groupes"></div>
+    
+    <script src="./assets/script.js"></script>
+</body>
+</html>
