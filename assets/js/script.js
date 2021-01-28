@@ -6,6 +6,8 @@
 let listeEleves = [];/*liste des eleves, je l'utilise pour ajouter a chaque fois dans le champ du localstorage*/
 let groupes=[]; /*liste des groupes, que j'afficherai a la fin de la creation des groupes*/
 
+
+
 /* Ajoute les noms dans la liste Eleves*/
 document.querySelector('#envoyer').addEventListener('click', function(){
    
@@ -53,13 +55,20 @@ document.querySelector("#creation").addEventListener('click', function(){
                 //on choisie al hazar le nro d element
                 let choix = Math.floor(Math.random() * taille);  
                 
+                
                 //on cree le subgroupe
                 sousGroupes.push(arrayEleves[choix]);
 
                 //j enleve le element de la liste des eleves                
                 arrayEleves.splice(choix, 1)
-               
+                
                 taille -=1;//pour controler la sortie
+
+                if(i== arrayEleves.length){
+                    break;
+                }
+
+                
                
             }
             groupes.push(sousGroupes);
@@ -73,16 +82,24 @@ document.querySelector("#creation").addEventListener('click', function(){
 
         for(let x =0; x < groupes.length; x++){
          
-            //console.log(groupes[x]);
-            document.querySelector("div#groupes").innerHTML += "Groupe #"+x +"<br> ";
+            document.querySelector("div#groupes").innerHTML += "<h3>Groupe : "+x +"</h3> ";            
 
-            document.querySelector("div#groupes").innerHTML += groupes[x].join(' - ');            
+
+            document.querySelector("div#groupes").innerHTML += groupes[x].join(' - ');
+                       
             document.querySelector("div#groupes").innerHTML +="<br>";
 
-            //localStorage.setItem('groupe1',listeEleves); je l utiliser apres
+            localStorage.setItem('groupe'+x,groupes[x].join(' - ')); //je l utiliser apres
 
         }
         
        
     }
 });
+
+document.querySelector(".name").addEventListener('keydown', (e) => {
+    if( e.keyCode == 13){
+        document.querySelector("#envoyer").click();
+    }
+    
+  });

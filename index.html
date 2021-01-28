@@ -1,29 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Generateur des Groupes</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-        <h1>Creation des groupes </h1>
-    <form name="form1" methode='GET'>
-        <!--<input type="text">
-        <input type="submit" value="Envoyer"> onclick="envoyer(form1)" onClick="controle(form1)"" -->
-        <label for="">Nom de l'eleve</label>
-        <input TYPE="text" NAME="noms" class="name" VALUE="">  <INPUT TYPE="button" NAME="bouton" id='envoyer' VALUE="Envoyer" >
-    </form>
-    <h3> La liste des Eleves</h3>
+    <main>
+        <section>
+            <div>
+                <h1>Creation des groupes </h1>
+                
+                <div class="ligneCreation">
+                    <label for="">Nom de l'eleve</label>
+                    <input type="text" name="noms" class="name" value="">
+                    <input type="button" name="bouton" id='envoyer' value="Ajouter" >
+                </div>
+            </div>
+            <div>
+                <h3> La liste des Eleves</h3>        
+                                
+                <ul  id="listeEleves"> </ul>
+                                
+            </div>
+            
+        </section>
 
-    
-    <label id="liste" for=""></label>
-    <ul  id="listeEleves"> </ul>
+        <section>
+            <h2>Groupes</h2>
+            <div class="ligneCreation">
+                <label for="tailleGroupe">Taille du Groupes </label>
+                <input type="number"  min=0 name="tailleGroupe" id="tailleGroupe">
+                <button id='creation'>Creation</button>
+            </div>
+            <div id="groupes">
 
-    <label for="">Taille du Groupes </label>
-    <input type="number" name="tailleGroupe" id="tailleGroupe">
-    <button id='creation'>Creation</button>
-    <h2>Groupes</h2>
-    <div id="groupes"></div>
+            </div>
+        </section>
+    </main>
     
     <script src="./assets/js/script.js"></script>
 </body>
