@@ -82,7 +82,7 @@ document.querySelector("#creation").addEventListener('click', function(){
 
         for(let x =0; x < groupes.length; x++){
          
-            document.querySelector("div#groupes").innerHTML += "<h3>Groupe : "+x +"</h3> ";            
+            document.querySelector("div#groupes").innerHTML += "<h3>Groupe : "+(x+1) +"</h3> ";            
 
 
             document.querySelector("div#groupes").innerHTML += groupes[x].join(' - ');
