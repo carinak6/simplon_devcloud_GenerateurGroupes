@@ -1,31 +1,36 @@
-/*document.addEventListener('DOMContentLoaded', (event) => {
-    //VOTRE CODE... à utiliser pour savoir si
-    console.log('Dom bien chargé')
-  })*/
-
-let listeEleves = [];/*liste des eleves, je l'utilise pour ajouter a chaque fois dans le champ du localstorage*/
 let groupes=[]; /*liste des groupes, que j'afficherai a la fin de la creation des groupes*/
-
+var array_eleves=[];/*liste des eleves, je l'utilise pour ajouter a chaque fois dans le champ du localstorage*/
 
 if(localStorage.getItem('eleves')){
     let elevesLocal = localStorage.getItem('eleves');
     array_eleves = elevesLocal.split(',');
+
     for(eleve of array_eleves){
-        document.querySelector("#listeEleves").innerHTML += "<li>"+eleve+"</li>";
+        document.querySelector("#listeEleves").innerHTML += "<li>"+eleve+"<i class=\"far fa-minus-square\"></i></li>";
     }
+}
+
+//recupere toutes les <i>
+let balisesI = document.querySelectorAll('i');
+
+for(balise of balisesI){
+    
+    balise.addEventListener('click',(e)=>{       
+            
+            e.target.parentElement.remove();
+    });
 }
 
 
 /* Ajoute les noms dans la liste Eleves*/
-document.querySelector('#envoyer').addEventListener('click', function(){
-   
-    listeEleves.push(document.querySelector('.name').value);//enregistre dans la liste
+document.querySelector('#envoyer').addEventListener('click', function(){    
+
+    array_eleves.push(document.querySelector('.name').value);
 
     /* ajoute le nom dans la liste*/
-    document.querySelector("#listeEleves").innerHTML += "<li>"+document.querySelector('.name').value+"</li>";
-    
-    
-    localStorage.setItem('eleves',listeEleves);//enregistre dans le localstorage la liste eleves
+    document.querySelector("#listeEleves").innerHTML += "<li>"+document.querySelector('.name').value+"  <i class=\"far fa-minus-square\"></i></li>";
+           
+    localStorage.setItem('eleves',array_eleves);
    
     document.querySelector('.name').value="";//reinitialise le champ nom
 });
@@ -34,19 +39,25 @@ document.querySelector('#envoyer').addEventListener('click', function(){
 
 /**creation des groupes */
 document.querySelector("#creation").addEventListener('click', function(){
-    /*il faudra factoriser le code avec des functions*/
-
+    /*TODO il faudra factoriser le code avec des functions*/
     
     let nb= parseInt(document.querySelector("#tailleGroupe").value); /** je reçois la taille du groupe */
 
-    let eleves = localStorage.getItem('eleves');// il return en un type string
-    arrayEleves = eleves.split(','); //je cree un tableaux des noms
+    let liste_elevesLI= document.querySelectorAll('li');
+    console.log(liste_elevesLI);
+    
+    array_eleves=[];//reinitialise, se modifie entre temps avec la supression
+    for(une_li of liste_elevesLI){
+            console.log(une_li.textContent);
+            array_eleves.push(une_li.textContent);
+    }
+    localStorage.setItem('eleves',array_eleves);
 
     /*copie de l'array original */
-    copieArrayEleves = [...arrayEleves];
-    console.log(arrayEleves);
+    copieArrayEleves = [...array_eleves];
+    console.log(array_eleves);
     
-    let taille = arrayEleves.length;
+    let taille = array_eleves.length;
         
     let sousGroupes=[];
     groupes.length=0;
